@@ -1,33 +1,29 @@
-function reverseString() {
+function reverse_string() {
     const input = document.getElementById("user_input").value.trim();
     const resultMsg = document.getElementById("result_msg");
 
     resultMsg.classList.add("d-none");
     resultMsg.classList.remove("alert-danger", "alert-success");
-
+    
+    let reversed = "";
     
     if (input.length === 0) {
-        showError("Please enter a sentence");
+        show_error("Please enter a sentence");
         return;
-    }    
-    if (/[^a-zA-Z0-9\s]/.test(input)) {
-        showError("Special Character(s) not allowed");
+    } else if (/[^a-zA-Z0-9\s]/.test(input)) {
+        show_error("Special Character(s) not allowed");
         return;
-    }   
-    if (/\d/.test(input)) {
-        showError("Number(s) not allowed");
+    } else if (/\d/.test(input)) {
+        show_error("Number(s) not allowed");
         return;
-    }
-    if (input.includes(" ")) {
-        showError("Please enter only one word");
+    } else if (input.includes(" ")) {
+        show_error("Please enter only one word");
         return;
-    }
-    if (input.length === 1) {
-        showError("Please enter more than one character");
+    } else if (input.length === 1) {
+        show_error("Please enter more than one character");
         return;
     }
-
-    let reversed = "";
+    
     for (let i = input.length - 1; i >= 0; i--) {
         reversed += input[i];
     }
@@ -37,14 +33,14 @@ function reverseString() {
     resultMsg.classList.add("alert-success");
 }
 
-function showError(message) {
+function show_error(message) {
     const resultMsg = document.getElementById("result_msg");
     resultMsg.innerText = message;
     resultMsg.classList.remove("d-none");
     resultMsg.classList.add("alert-danger");
 }
 
-function resetForm() {
+function reset_form() {
     document.getElementById("user_input").value = "";
     document.getElementById("result_msg").classList.add("d-none");
 }
